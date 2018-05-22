@@ -17,17 +17,17 @@ public class Controller {
     public Object search(String key, String search){
         if(isHeader(key)) {
             if (search.contains(" ")) {
+                for (int i = 0; i < list.size(); i++) {
+                    if (list.get(i).data.get(key).equalsIgnoreCase(search)) {
+                        return list.get(i).run();
+                    }
+                }
+            } else {
                 for(int i = 0; i < list.size(); i++){
                     for(String str : list.get(i).data.get(key).split(" ")){
                         if(str.equalsIgnoreCase(search)){
                             return list.get(i).run();
                         }
-                    }
-                }
-            } else {
-                for (int i = 0; i < list.size(); i++) {
-                    if (list.get(i).data.get(key).equalsIgnoreCase(search)) {
-                        return list.get(i).run();
                     }
                 }
             }
